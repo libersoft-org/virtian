@@ -1,0 +1,50 @@
+   <ol class="breadcrumb bg-admin2 text-light">
+    <li class="breadcrumb-item"><a href="./?page=storage">Storage</a></li>
+    <li class="breadcrumb-item"><a href="./?page=storage-volumes&amp;id=[[pool]]">[[pool]]</a></li>
+    <li class="breadcrumb-item active">New storage volume</li>
+   </ol>
+   <div id="error" class="alert" style="display: none;">
+    <span class="bold">Error:</span>
+    <span id="error-message"></span>
+   </div>
+   <div class="card card-md form-size-md mb-3">
+    <div class="card-header bg-admin text-white bold">Add a new storage volume (disk image)</div>
+    <div class="card-body table-responsive">
+     <form id="storage-volume-new">
+      <table class="table">
+       <tr>
+        <td class="bold">Image name:</td>
+        <td><input class="form-control" type="text" name="name" /></td>
+        </td>
+       </tr>
+       <tr>
+        <td class="bold">Image type:</td>
+        <td>
+         <select class="form-control" name="type">
+          <option value="0">RAW</option>
+          <option value="1">Qcow</option>
+          <option value="2">Qcow2</option>
+         </select>
+        </td>
+       </tr>
+       <tr>
+        <td class="bold">Size:</td>
+        <td>
+         <input class="form-control form-inline" style="max-width: 200px;" type="number" name="size" min="1" value="8" />
+         <select class="form-control form-inline" name="size_unit">
+          <option value="0">B</option>
+          <option value="1">kB</option>
+          <option value="2">MB</option>
+          <option value="3" selected>GB</option>
+          <option value="4">TB</option>
+          <option value="5">PB</option>
+          <option value="6">EB</option>
+         </select>
+        </td>
+       </tr>
+       <input type="hidden" name="pool" value="[[pool]]" />
+      </table>
+      <button type="submit" class="btn btn-lg btn-primary btn-block">Create new storage volume</button>
+     </form>
+    </div>
+   </div>

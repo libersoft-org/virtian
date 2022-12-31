@@ -1,0 +1,17 @@
+   <ol class="breadcrumb bg-admin2 text-light">
+    <li class="breadcrumb-item"><a href="./?page=storage">Storage</a></li>
+    <li class="breadcrumb-item"><a href="./?page=storage-volumes&id=[[pool]]">[[pool]]</a></li>
+    <li class="breadcrumb-item active">[[id]]</li>
+   </ol>
+   <div class="card form-size-md mb-3">
+    <div class="card-body table-responsive">
+     <a onclick="DeleteVolume('[[pool]]', '[[id]]')"><span class="btn bg-red mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/delete.svg" alt="Delete" />Delete</span></span></a>
+     <br />
+     <table class="table table-sm table-hover table-light">
+      <tr><td class="column-slim bold">Name:</td><td>[[id]]</td></tr>
+      <tr><td class="column-slim bold">Path:</td><td>[[path]]</td></tr>
+      <tr><td class="column-slim bold">Capacity:</td><td>[[capacity]]</td></tr>
+      <tr><td class="column-slim bold">Allocation:</td><td>[[allocation]]</td></tr>
+     </table>
+    </div>
+   </div>

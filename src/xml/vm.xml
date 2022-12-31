@@ -1,0 +1,43 @@
+<domain type='kvm'>
+  <name>{{name}}</name>
+  <uuid>{{uuid}}</uuid>
+  <memory unit='{{ram-unit}}'>{{ram}}</memory>
+  <currentMemory unit='{{ram-unit}}'>{{ram}}</currentMemory>
+  <vcpu>{{cpu}}</vcpu>
+  <os>
+    <type>hvm</type>
+    <boot dev='cdrom'/>
+    <boot dev='hd'/>
+  </os>
+  <features>
+    <acpi/>
+  </features>
+  <clock offset='utc'/>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>restart</on_crash>
+  <devices>
+    <emulator>/usr/bin/kvm</emulator>
+{{cd}}
+{{disks}}
+    <controller type='usb' index='0'/>
+    <controller type='pci' index='0' model='pci-root'/>
+    <controller type='ide' index='0'/>
+    <serial type='pty'>
+      <target port='0'/>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+    <input type='mouse' bus='ps2'/>
+    <input type='keyboard' bus='ps2'/>
+    <graphics type='vnc' port='-1' autoport='yes' passwd='{{password}}'>
+      <listen type='address'/>
+    </graphics>
+    <video>
+      <model type='virtio' vram='16384' heads='1' primary='yes'/>
+    </video>
+{{nets}}
+    <memballoon model='virtio'/>
+  </devices>
+</domain>

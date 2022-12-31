@@ -1,0 +1,42 @@
+html, body {
+ height: 100%;
+}
+
+a {
+ font-weight: bold;
+}
+
+body {
+ display: flex;
+ align-items: center;
+}
+
+.logo {
+ width: 100%;
+ max-width: 240px;
+}
+
+.form {
+ width: 100%;
+ max-width: 400px;
+ margin: 0 auto;
+}
+
+.bg-login {
+ background-color: #00195D;
+}
+
+.bold {
+ font-weight: bold;
+}
+
+.btn-admin {
+ background-color: #EF6504;
+ color: #FFFFFF;
+ font-weight: bold;
+}
+
+.alert {
+ background-color: #FF0000;
+ color: #FFFFFF;
+}

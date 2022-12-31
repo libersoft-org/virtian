@@ -1,0 +1,22 @@
+   <ol class="breadcrumb bg-admin2 text-light">
+    <li class="breadcrumb-item active">Storage</li>
+   </ol>
+   <div class="card form-size-md mb-3">
+    <div class="card-header bg-admin text-white bold">List of storage pools</div>
+    <div class="card-body table-responsive">
+     <a href="./?page=storage-new"><span class="btn bg-green mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/add.svg" alt="New storage pool" />New storage pool</span></span></a>
+     <table class="table table-hover table-sm">
+      <thead class="thead-admin">
+       <th>Name</th>
+       <th>Path</th>
+       <th class="text-center">Active</th>
+       <th class="text-center">State</th>
+       <th class="text-center">Volumes</th>
+       <th class="text-center">Space<br />(used / free / total)</th>
+      </thead>
+      <tbody>
+[[rows]]
+      </tbody>
+     </table>
+    </div>
+   </div>

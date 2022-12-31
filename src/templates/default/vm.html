@@ -1,0 +1,32 @@
+   <ol class="breadcrumb bg-admin2 text-light">
+    <li class="breadcrumb-item"><a href="./?page=vms">Virtual servers</a></li>
+    <li class="breadcrumb-item active">[[name]]</li> 
+   </ol>
+   <div class="card form-size-md mb-3">
+    <div class="card-body table-responsive">
+     <div id="vm-buttons">
+      <a id="vm-button-start" style="display: none;" onclick="VMControl('start', '[[id]]')"><span class="btn bg-green mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/start.svg" alt="Start" />Start</span></span></a>
+      <a id="vm-button-shutdown" style="display: none;" onclick="VMControl('shutdown', '[[id]]')"><span class="btn bg-red mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/stop.svg" alt="Shutdown" />Shutdown</span></span></a>
+      <a id="vm-button-force-shutdown" style="display: none;" onclick="VMControl('force-shutdown', '[[id]]')"><span class="btn bg-red mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/stop.svg" alt="Force shutdown" />Force shutdown</span></span></a>
+      <a id="vm-button-restart" style="display: none;" onclick="VMControl('restart', '[[id]]')"><span class="btn bg-orange mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/restart.svg" alt="Restart" />Restart</span></span></a>
+      <a id="vm-button-force-restart" style="display: none;" onclick="VMControl('force-restart', '[[id]]')"><span class="btn bg-orange mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/restart.svg" alt="Force restart" />Force restart</span></span></a>
+      <a id="vm-button-suspend" style="display: none;" onclick="VMControl('suspend', '[[id]]')"><span class="btn bg-blue mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/pause.svg" alt="Suspend" />Suspend</span></span></a>
+      <a id="vm-button-resume" style="display: none;" onclick="VMControl('resume', '[[id]]')"><span class="btn bg-green mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/resume.svg" alt="Resume" />Resume</span></span></a>
+      <a id="vm-button-edit" href="./?page=vm-edit&amp;id=[[id]]"><span class="btn bg-blue mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/edit.svg" alt="Edit" />Edit</span></span></a>
+      <a id="vm-button-delete" style="display: none;" onclick="DeleteVM('[[id]]', '[[name]]')"><span class="btn bg-red mb-1"><span class="btn-img"><img class="btn-icon" src="[[template-path]]/img/delete.svg" alt="Delete" />Delete</span></span></a>
+     </div>
+     <br />
+     <table class="table table-sm table-hover table-light">
+      <tr><td class="column-slim bold">State:</td><td>[[state]]</td></tr>
+      <tr><td class="column-slim bold">CPU cores:</td><td>[[cpu]]</td></tr>
+      <tr><td class="column-slim bold">RAM:</td><td>[[ram]]</td></tr>
+      <tr><td class="column-slim bold">Networks:</td><td>[[net]]</td></tr>
+      <tr><td class="column-slim bold">Disk drives:</td><td>[[disks]]</td></tr>
+      <tr><td class="column-slim bold">VNC port:</td><td>[[vnc]]</td></tr>
+     </table>
+     <div class="bold">Screenshot:</div>
+     <div class="mt-2 mb-2"><img id="screenshot" src="vm-screen.php?id=[[id]]" alt="[[name]]" onclick="ReloadScreenshot('vm-screen.php?id=[[id]]')" /></div>
+     <div class="bold">(click on image to reload)</div>
+    </div>
+   </div>
+   <script>UpdateVM('[[id]]');</script>

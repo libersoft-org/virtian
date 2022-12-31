@@ -1,0 +1,4 @@
+    <disk type='block' device='disk'>
+      <source dev='{{path}}'/>
+      <target dev='{{dev}}' bus='virtio'/>
+    </disk>

@@ -1,0 +1,101 @@
+   <ol class="breadcrumb bg-admin2 text-light">
+    <li class="breadcrumb-item"><a href="./?page=vms">Virtual servers</a></li>
+    <li class="breadcrumb-item active">New virtual server</li>
+   </ol>
+[[error]]
+   <div id="error" class="alert" style="display: none;">
+    <span class="bold">Error:</span>
+    <span id="error-message"></span>
+   </div>
+   <div class="card card-md form-size-md mb-3">
+    <div class="card-header bg-admin text-white bold">Create a new virtual server</div>
+    <div class="card-body table-responsive">
+     <form id="vm-new">
+      <table class="table">
+       <tr>
+        <td class="column-slim bold">Name:</td>
+        <td><input class="form-control" type="text" name="name" maxlength="48" autocomplete="off" required autofocus /></td>
+       </tr>
+       <tr>
+        <td class="column-slim bold">CPU cores:</td>
+        <td>
+         <select class="form-control" name="cpu" required>
+[[cpu-cores]]
+         </select>
+        </td>
+       </tr>
+       <tr>
+        <td class="column-slim bold">RAM:</td>
+        <td>
+         <input class="form-control form-inline" type="number" name="ram" value="1" min="1" maxlength="24" required />
+         <select class="form-control form-inline" name="ram_unit">
+          <option value="0">B</option>
+          <option value="1">kB</option>
+          <option value="2">MB</option>
+          <option value="3" selected>GB</option>
+          <option value="4">TB</option>
+          <option value="5">PB</option>
+          <option value="6">EB</option>
+         </select>
+        </td>
+       </tr>
+       <tr>
+        <td class="column-slim bold">Installation ISO:</td>
+        <td>
+         <select class="form-control" name="iso">
+          <option value="">-- None --</option>
+[[isos]]
+         </select>
+        </td>
+       </tr>
+       <tr>
+        <td class="column-slim bold">VNC password:</td>
+        <td><input class="form-control" type="text" name="password" value="[[password]]"/></td>
+       </tr>
+       <tr>
+        <td class="column-slim bold">Network interfaces:</td>
+        <td>
+         <a onclick="VMNewAddNetwork('[[add-network-template]]');">
+          <span class="btn btn-sm bg-success mb-1">
+           <span class="btn-img">
+            <img class="btn-icon" src="templates/default/img/add.svg" alt="Add a network interface" />Network interface
+           </span>
+          </span>
+         </a>
+         <br />
+         <div id="networks"></div>
+        </td>
+       </tr>
+       <tr>
+        <td class="column-slim bold">Virtual disks:</td>
+        <td>
+         <a onclick="VMNewAddNewDisk('[[add-disk-template]]');">
+          <span class="btn btn-sm bg-success mb-1">
+           <span class="btn-img">
+            <img class="btn-icon" src="templates/default/img/add.svg" alt="Add a new disk" />New disk image<br />
+           </span>
+          </span>
+         </a>
+         <a onclick="VMNewAddExistingDisk('[[add-disk-template]]');">
+          <span class="btn btn-sm bg-success mb-1">
+           <span class="btn-img">
+            <img class="btn-icon" src="templates/default/img/add.svg" alt="Add an existing disk" />Existing disk image
+           </span>
+          </span>
+         </a>
+         <a onclick="VMNewAddDiskDevice('[[add-disk-template]]');">
+          <span class="btn btn-sm bg-success mb-1">
+           <span class="btn-img">
+            <img class="btn-icon" src="templates/default/img/add.svg" alt="Add a disk device" />Disk device
+           </span>
+          </span>
+         </a>
+         <br />
+         <div id="disks"></div>
+        </td>
+       </tr>
+      </table>
+      <button type="submit" class="btn btn-lg btn-primary btn-block">Create new VM</button>
+     </form>
+    </div>
+   </div>

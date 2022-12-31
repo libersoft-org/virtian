@@ -1,0 +1,26 @@
+<div class="mb-3">
+ <input type="hidden" name="disk[[[id]]][add_type]" value="1" />
+ <table class="w-100">
+  <tr class="bg-admin text-light">
+   <th colspan="2">
+    <span class="icon-row"><a class="pointer" onclick="VMNewRemoveDisk(this)"><img class="table-icon mr-2" src="[[template-path]]/img/delete.svg" alt="Remove" /></a>Existing disk image</span>
+   </th>
+  </tr>
+  <tr>
+   <td class="bold">Storage:</td>
+   <td>
+    <select class="form-control" name="disk[[[id]]][storage]" onchange="VMNewAddExistingDiskImageList(this.value, [[id]])">
+     <option value="">-- None --</option>
+[[storage]]
+    </select>
+   </td>
+  </tr>
+  <tr>
+   <td class="bold">Image:</td>
+   <td>
+    <select id="image_[[id]]" class="form-control" name="disk[[[id]]][image]">
+    </select>
+   </td>
+  </tr>
+ </table>
+</div>

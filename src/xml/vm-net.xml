@@ -1,0 +1,4 @@
+    <interface type='direct'>
+      <source dev='{{dev}}' mode='bridge'/>
+      <model type='virtio'/>
+    </interface>

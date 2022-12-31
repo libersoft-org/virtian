@@ -1,0 +1,26 @@
+   <ol class="breadcrumb bg-admin2 text-light">
+    <li class="breadcrumb-item"><a href="./?page=storage">Storage</a></li>
+    <li class="breadcrumb-item active">New storage</li>
+   </ol>
+   <div id="error" class="alert" style="display: none;">
+    <span class="bold">Error:</span>
+    <span id="error-message"></span>
+   </div>
+   <div class="card card-md form-size-md mb-3">
+    <div class="card-header bg-admin text-white bold">Add new storage</div>
+    <div class="card-body table-responsive">
+     <form id="storage-new">
+      <table class="table">
+       <tr>
+        <td class="column-slim bold">Name:</td>
+        <td><input class="form-control" type="text" name="name" maxlength="48" autocomplete="off" required autofocus /></td>
+       </tr>
+       <tr>
+        <td class="column-slim bold">Path:</td>
+        <td><input class="form-control" type="text" name="path" autocomplete="off" required /></td>
+       </tr>
+      </table>
+      <button type="submit" class="btn btn-lg btn-primary btn-block">Create new storage</button>
+     </form>
+    </div>
+   </div>

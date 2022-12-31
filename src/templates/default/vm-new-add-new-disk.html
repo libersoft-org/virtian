@@ -1,0 +1,48 @@
+<div class="mb-3">
+ <input type="hidden" name="disk[[[id]]][add_type]" value="0" />
+ <table class="w-100">
+  <tr class="bg-admin text-light">
+   <th colspan="2">
+    <span class="icon-row"><a class="pointer" onclick="VMNewRemoveDisk(this)"><img class="table-icon mr-2" src="[[template-path]]/img/delete.svg" alt="Remove" /></a>New disk image</span>
+   </th>
+  </tr>
+  <tr>
+   <td class="bold">Image name:</td>
+   <td><input class="form-control" type="text" name="disk[[[id]]][name]" /></td>
+   </td>
+  </tr>
+  <tr>
+   <td class="bold">Image type:</td>
+   <td>
+    <select class="form-control" name="disk[[[id]]][image_type]">
+     <option value="0">RAW</option>
+     <option value="1">Qcow</option>
+     <option value="2">Qcow2</option>
+    </select>
+   </td>
+  </tr>
+  <tr>
+   <td class="bold">Size:</td>
+   <td>
+    <input class="form-control form-inline" style="max-width: 200px;" type="number" name="disk[[[id]]][size]" min="1" value="8" />
+    <select class="form-control form-inline" name="disk[[[id]]][size_unit]">
+     <option value="0">B</option>
+     <option value="1">kB</option>
+     <option value="2">MB</option>
+     <option value="3" selected>GB</option>
+     <option value="4">TB</option>
+     <option value="5">PB</option>
+     <option value="6">EB</option>
+    </select>
+   </td>
+  </tr>
+  <tr>
+   <td class="bold">Storage:</td>
+   <td>
+    <select class="form-control" name="disk[[[id]]][storage]">
+[[storage]]
+    </select>
+   </td>
+  </tr>
+ </table>
+</div>

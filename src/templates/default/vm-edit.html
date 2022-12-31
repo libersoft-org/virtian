@@ -1,0 +1,19 @@
+   <ol class="breadcrumb bg-admin2 text-light">
+    <li class="breadcrumb-item"><a href="./?page=vms">Virtual servers</a></li>
+    <li class="breadcrumb-item"><a href="./?page=vm&id=[[id]]">[[name]]</a></li>
+    <li class="breadcrumb-item active">Edit VM</li>
+   </ol>
+   <div id="error" class="alert" style="display: none;">
+    <span class="bold">Error:</span>
+    <span id="error-message"></span>
+   </div>
+   <div class="card card-md form-size-md mb-3">
+    <div class="card-header bg-admin text-white bold">Edit virtual server - [[name]]</div>
+    <div class="card-body table-responsive">
+     <form id="vm-edit">
+      <textarea id="xml-textarea" name="xml" class="form-control" rows="20" autofocus>[[xml]]</textarea>
+      <input class="form-control" type="hidden" name="id" value="[[id]]" />
+      <button class="btn btn-primary btn-lg btn-block mt-3">Update</button>
+     </form>
+    </div>
+   </div>

@@ -1,0 +1,45 @@
+   <ol class="breadcrumb bg-admin2 text-light">
+    <li class="breadcrumb-item active">Server status</li>
+   </ol>
+   <div class="card form-size-md mb-3">
+    <div class="card-header bg-admin text-white bold">Software versions</div>
+    <div class="card-body table-responsive">
+     <table class="table table-hover table-sm">
+      <tr><th class="column-slim">[[product]] version:</th><td>[[version-product]]</td></tr>
+      <tr><th class="column-slim">Linux version:</th><td>[[version-linux]]</td></tr>
+      <tr><th class="column-slim">PHP version:</th><td>[[version-php]]</td></tr>
+      <tr><th class="column-slim">Libvirt version:</th><td>[[version-libvirt]]</td></tr>
+      <tr><th class="column-slim">Libvirt-PHP version:</th><td>[[version-libvirt-php]]</td></tr>
+     </table>
+    </div>
+   </div>
+   <div class="card form-size-md mb-3">
+    <div class="card-header bg-admin text-white bold">System resources</div>
+    <div class="card-body table-responsive">
+     <table class="table table-sm">
+      <tr><th class="column-slim">CPU usage:</th><td>[[cpu-usage]]</td></tr>
+      <tr><th class="column-slim">RAM usage:</th>
+       <td>
+        <table class="table">
+         <tr><th class="table-label"></th>
+          <td>
+           <div class="progress progress-thick bg-admin2-light">
+            <div class="progress-bar progress-bar-striped bg-admin2" role="progressbar" style="width: [[ram-used-percent]]%">[[ram-used-percent]]%</div>
+           </div>
+          </td>
+         </tr>
+         <tr><th class="table-label">Used:</th><td>[[ram-used]]</td></tr>
+         <tr><th class="table-label">Free:</th><td>[[ram-free]]</td></tr>
+         <tr><th class="table-label">Total:</th><td>[[ram-total]]</td></tr>
+        </table>
+       </td>
+      </tr>
+      <tr><th class="column-slim">Mounted drives usage:</th>
+       <td>
+[[storage]]
+       </td>
+      </tr>
+      <tr><th class="column-slim">Network usage:</th><td><span id="net"><img class="loading" src="[[template-path]]/img/loading.gif"> Loading ...<script>getNetworkUsage();</script></span></td></tr>
+     </table>
+    </div>
+   </div>

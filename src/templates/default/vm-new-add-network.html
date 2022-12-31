@@ -1,0 +1,17 @@
+<div class="mb-3">
+ <table class="w-100">
+  <tr class="bg-admin text-light">
+   <th colspan="2">
+    <span class="icon-row"><a class="pointer" onclick="VMNewRemoveNetwork(this)"><img class="table-icon mr-2" src="[[template-path]]/img/delete.svg" alt="Remove" /></a>Network interface</span>
+   </th>
+  </tr>
+  <tr>
+   <td class="bold">Physical network:</td>
+   <td>
+    <select class="form-control" name="network[[[id]]]">
+[[interfaces]]
+    </select>
+   </td>
+  </tr>
+ </table>
+</div>
