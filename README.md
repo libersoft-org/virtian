@@ -1,15 +1,6 @@
 # About Virtian
 **Virtian** is a web user interface for virtual servers management based on KVM. It is primarily designed for Debian Linux 11.x, but it might work on other Linux distributions.
 
-
-## Screenshots
-
-There are several screenshots on our [**official web page**](https://virtian.org/?page=screenshots).
-
-## Download
-
-You can download the latest version of Virtian from [**here**](https://github.com/softsun-cz/virtian/releases).
-
 ## Features
 
 - Virtual server management
@@ -26,7 +17,7 @@ You can download the latest version of Virtian from [**here**](https://github.co
 
 ```sh
 apt-get -y install git
-git clone https://github.com/softsun-cz/virtian.git
+git clone https://github.com/libersoft-org/virtian.git
 cd virtian
 ./install.sh
 reboot
@@ -46,5 +37,4 @@ This software is developed as open source under [**Unlicense**](./LICENSE).
 
 ## Contact info
 **Web page:** https://virtian.org
-
 **E-mail:** info@virtian.org
