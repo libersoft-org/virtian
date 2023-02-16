@@ -38,7 +38,7 @@ You can set some basic properties (password, web template path, installation ISO
 
 ![Virtian on desktop](./screenshots/virtian.png)
 
-- mobile:
+- Mobile:
 
 ![Virtian on mobile](./screenshots/virtian2.png)
 
