@@ -36,11 +36,11 @@ You can set some basic properties (password, web template path, installation ISO
 
 - Desktop:
 
-![alt text](./screenshots/virtian.png)
+![Virtian on desktop](./screenshots/virtian.png)
 
 - mobile:
 
-![alt text](./screenshots/virtian2.png)
+![Virtian on mobile](./screenshots/virtian2.png)
 
 ## License
 
