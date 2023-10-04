@@ -46,11 +46,6 @@ You can set some basic properties (password, web template path, installation ISO
 
 This software is developed as open source under [**Unlicense**](./LICENSE).
 
-## Contact info
-
-- Web page: **https://virtian.org**
-- E-mail: **info@virtian.org**
-
 ## Donations
 
 Donations are important to support the ongoing development and maintenance of our open source projects. Your contributions help us cover costs and support our team in improving our software. We appreciate any support you can offer.
