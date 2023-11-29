@@ -3,7 +3,6 @@
 apt-get update
 apt-get -y upgrade
 apt-get -y install mc ssh net-tools nginx php-fpm php-imagick php-gd vnstat xfsprogs libvirt-clients libvirt-daemon libvirt-daemon-system virtinst php-libvirt-php
-alias ls="ls -la --color=always --group-directories-first"
 rm -rf /var/www/html
 openssl req -x509 -newkey rsa:2048 -nodes -days $(expr '(' $(date -d 2999/01/01 +%s) - $(date +%s) + 86399 ')' / 86400) -subj "/" -keyout /etc/nginx/nginx.key -out /etc/nginx/nginx.crt
 adduser www-data libvirt
@@ -14,7 +13,8 @@ sed -i -e 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/
 sed -i -e 's/#vnc_listen = "0.0.0.0"/vnc_listen = "0.0.0.0"/g' /etc/libvirt/qemu.conf
 sed -i -e 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet/GRUB_CMDLINE_LINUX_DEFAULT="quiet consoleblank=0/g' /etc/default/grub
 update-grub
-echo "alias ls='ls -la --color=auto'" >> /root/.bashrc
+alias ls='ls -la --color=always --group-directories-first'
+echo "alias ls='ls -la --color=always --group-directories-first'" >> /root/.bashrc
 echo -ne '' > /etc/motd
 rm /etc/update-motd.d/10-uname
 mv ./src/* /var/www/
