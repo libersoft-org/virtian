@@ -432,7 +432,7 @@ class Libvirt {
     return nics['num'];
   }
 
-  get_disk_capacity(domain, physical = false, disk = '*', unit = '?') {
+  getDiskCapacity(domain, physical = false, disk = '*', unit = '?') {
     const dom = this.getDomainObject(domain);
     const tmp = this.getXpath(dom);
     let ret = 0;
