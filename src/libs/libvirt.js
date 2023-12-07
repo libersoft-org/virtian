@@ -420,7 +420,7 @@ class Libvirt {
     return ret;
   }
 
-  get_network_cards(domain) {
+  getNetworkCards(domain) {
     const dom = this.getDomainObject(domain);
     const nics = this.getXpath(dom, '//domain/devices/interface[@type="network"]', false);
 
@@ -449,4 +449,48 @@ class Libvirt {
 
     return this.formatSize(ret, 2, unit);
   }
+
+  getDiskCount(domain) {
+    const dom = this.getDomainObject(domain);
+    const tmp = this.getDiskStats(dom);
+    const ret = tmp.length;
+    return ret;
+  }
+
+  formatSize(value, decimals, unit = '?') {
+    if (unit === '?') {
+      if (value > 1099511627776) unit = 'T';
+      else if (value > (1 << 30)) unit = 'G';
+      else if (value > (1 << 20)) unit = 'M';
+      else if (value > (1 << 10)) unit = 'K';
+      else unit = 'B';
+    }
+
+    unit = unit.toUpperCase();
+    switch (unit) {
+      case 'T':
+        return (value / 1099511627776).toFixed(decimals) + ' TB';
+      case 'G':
+        return (value / (1 << 30)).toFixed(decimals) + ' GB';
+      case 'M':
+        return (value / (1 << 20)).toFixed(decimals) + ' MB';
+      case 'K':
+        return (value / (1 << 10)).toFixed(decimals) + ' kB';
+      case 'B':
+        return value + ' B';
+    }
+
+    return false;
+  }
+
+  getUri() {
+    const tmp = libvirt_connect_get_uri(this.conn);
+    return tmp ? tmp : this._setLastError();
+  }
+
+  getDomainCount() {
+    const tmp = libvirt_domain_get_counts(this.conn);
+    return tmp ? tmp : this._setLastError();
+  }
+
 }
