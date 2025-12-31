@@ -2,13 +2,13 @@
 
 apt-get update
 apt-get -y upgrade
-apt-get -y install mc ssh net-tools nginx php-fpm php-imagick php-gd vnstat xfsprogs libvirt-clients libvirt-daemon libvirt-daemon-system virtinst php-libvirt-php
+apt-get -y install mc ssh net-tools nginx php-fpm php-imagick php-gd vnstat xfsprogs libvirt-clients libvirt-daemon libvirt-daemon-system virtinst php-libvirt-php php8.4-libvirt-php
 rm -rf /var/www/html
 openssl req -x509 -newkey rsa:2048 -nodes -days $(expr '(' $(date -d 2999/01/01 +%s) - $(date +%s) + 86399 ')' / 86400) -subj "/" -keyout /etc/nginx/nginx.key -out /etc/nginx/nginx.crt
 adduser www-data libvirt
 adduser www-data libvirt-qemu
-sed -i -e 's/display_errors = Off/display_errors = On/g' /etc/php/7.4/fpm/php.ini
-sed -i -e 's/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_STRICT/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_STRICT \& ~E_NOTICE/g' /etc/php/7.4/fpm/php.ini
+sed -i -e 's/display_errors = Off/display_errors = On/g' /etc/php/8.4/fpm/php.ini
+sed -i -e 's/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_STRICT/error_reporting = E_ALL \& ~E_DEPRECATED \& ~E_STRICT \& ~E_NOTICE/g' /etc/php/8.4/fpm/php.ini
 sed -i -e 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 sed -i -e 's/#vnc_listen = "0.0.0.0"/vnc_listen = "0.0.0.0"/g' /etc/libvirt/qemu.conf
 sed -i -e 's/GRUB_CMDLINE_LINUX_DEFAULT="quiet/GRUB_CMDLINE_LINUX_DEFAULT="quiet consoleblank=0/g' /etc/default/grub
@@ -43,7 +43,7 @@ server {
         }
         location ~ \.php\$ {
                 include snippets/fastcgi-php.conf;
-                fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
+                fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
         }
 }
 EOF
@@ -62,5 +62,5 @@ cat << EOF > /etc/issue
 
 EOF
 service nginx restart
-service php7.4-fpm restart
+service php8.4-fpm restart
 service ssh restart
