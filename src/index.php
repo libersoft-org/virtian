@@ -20,7 +20,8 @@
   } else {
    $GLOBALS['body']           = file_get_contents($GLOBALS['template-path'] . '/index.html');
    $GLOBALS['error_template'] = file_get_contents($GLOBALS['template-path'] . '/error.html');
-   switch($_GET['page']) {
+   $page = $_GET['page'] ?? '';
+   switch($page) {
     case 'vms':
      getVMs();
      break;
@@ -70,11 +71,11 @@
     '[[year-from]]'       => $GLOBALS['year-from'],
     '[[year-to]]'         => date('Y'),
     '[[active-status]]'   => !isset($_GET['page']) ? ' active' : '',
-    '[[active-vms]]'      => $_GET['page'] == 'vms' || $_GET['page'] == 'vm' || $_GET['page'] == 'vm-new' || $_GET['page'] == 'vm-edit' ? ' active' : '',
-    '[[active-storage]]'  => $_GET['page'] == 'storage' ? ' active' : '',
-    '[[active-network]]'  => $_GET['page'] == 'network' ? ' active' : '',
-    '[[active-settings]]' => $_GET['page'] == 'settings' ? ' active' : '',
-    '[[active-log]]'      => $_GET['page'] == 'log' ? ' active' : ''
+    '[[active-vms]]'      => $page == 'vms' || $page == 'vm' || $page == 'vm-new' || $page == 'vm-edit' ? ' active' : '',
+    '[[active-storage]]'  => $page == 'storage' ? ' active' : '',
+    '[[active-network]]'  => $page == 'network' ? ' active' : '',
+    '[[active-settings]]' => $page == 'settings' ? ' active' : '',
+    '[[active-log]]'      => $page == 'log' ? ' active' : ''
    );
   }
   $GLOBALS['body'] = html_replace($body_array, $GLOBALS['body']);
@@ -87,7 +88,13 @@
   $storage_template = file_get_contents($GLOBALS['template-path'] . '/status-storage.html');
   $storage_html = '';
   $lv = new Libvirt();
-  $lvver = libvirt_version();
+  $lvver = function_exists('libvirt_version') ? libvirt_version() : null;
+  if (!is_array($lvver)) {
+   $lvver = [
+    'libvirt.major' => 0, 'libvirt.minor' => 0, 'libvirt.release' => 0,
+    'connector.major' => 0, 'connector.minor' => 0, 'connector.release' => 0,
+   ];
+  }
   foreach ($storage as $s) {
    $storage_array = array(
     '[[path]]'         => $s[6],
@@ -263,6 +270,7 @@
   $storage_template = file_get_contents($GLOBALS['template-path'] . '/storage.html');
   $pool_template = file_get_contents($GLOBALS['template-path'] . '/storage-row.html');
   $lv = new Libvirt();
+  $pools_html = '';
   if (!@$lv->connect($GLOBALS['address'])) {
    $body_array = array(
     '[[title]]'   => 'Error',
@@ -270,8 +278,10 @@
    );
   } else {
    $pools = $lv->get_storagepools();
+   if (!is_array($pools)) $pools = [];
    foreach ($pools as $p) {
     $pi = $lv->get_storagepool_info($p);
+    if (!is_array($pi)) continue;
     $pools_array = array(
      '[[name]]'       => $p,
      '[[id]]'         => $p,
