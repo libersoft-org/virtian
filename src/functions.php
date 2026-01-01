@@ -13,8 +13,10 @@
   $data = explode("\n", shell_exec('cat /proc/meminfo'));
   $meminfo = array();
   foreach ($data as $line) {
-   list($key, $val) = explode(":", $line);
-   $meminfo[$key] = str_replace(' kB', '', trim($val) * 1024);
+   $line = trim($line);
+   if ($line === '' || strpos($line, ':') === false) continue;
+   [$key, $val] = explode(':', $line, 2);
+   $meminfo[$key] = (int) str_replace(' kB', '', trim($val)) * 1024;
   }
   $result = array(
    'used' => $meminfo['MemTotal'] - $meminfo['MemAvailable'],
@@ -69,11 +71,13 @@
  }
 
  function getNetworkDetails($interface) {
-  $s = explode(' ', shell_exec('ifconfig ' . $interface . ' | grep \'inet \' | awk \'{print $2, $4, $6}\''));
-  $nets['ip'] = $s[0];
-  $nets['mask'] = $s[1];
-  $nets['broadcast'] = $s[2];
-  return $nets;
+  $out = trim(shell_exec("ifconfig " . escapeshellarg($interface) . " 2>/dev/null | grep 'inet ' | awk '{print $2, $4, $6}'"));
+  $parts = preg_split('/\s+/', $out, -1, PREG_SPLIT_NO_EMPTY);
+  return [
+   'ip'        => $parts[0] ?? '',
+   'mask'      => $parts[1] ?? '',
+   'broadcast' => $parts[2] ?? '',
+  ];
  }
 
  function getRandomPassword($min, $max) {
