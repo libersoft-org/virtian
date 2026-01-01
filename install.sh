@@ -24,27 +24,29 @@ mkdir /iso
 
 cat << EOF > /etc/nginx/sites-enabled/default
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server;
-        server_name _;
-        return 301 https://\$host\$request_uri;
+ listen 80 default_server;
+ listen [::]:80 default_server;
+ server_name _;
+ return 301 https://\$host\$request_uri;
 }
 
 server {
-        listen 443 ssl http2 default_server;
-        listen [::]:443 ssl http2 default_server;
-        server_name _;
-        ssl_certificate /etc/nginx/nginx.crt;
-        ssl_certificate_key /etc/nginx/nginx.key;
-        root /var/www;
-        index index.html index.htm index.php;
-        location / {
-                try_files \$uri \$uri/ =404;
-        }
-        location ~ \.php\$ {
-                include snippets/fastcgi-php.conf;
-                fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
-        }
+ listen 443 ssl http2 default_server;
+ listen [::]:443 ssl http2 default_server;
+ server_name _;
+ ssl_certificate /etc/nginx/nginx.crt;
+ ssl_certificate_key /etc/nginx/nginx.key;
+ root /var/www;
+ index index.html index.htm index.php;
+
+ location / {
+  try_files \$uri \$uri/ =404;
+ }
+ 
+ location ~ \.php\$ {
+  include snippets/fastcgi-php.conf;
+  fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
+ }
 }
 EOF
 
