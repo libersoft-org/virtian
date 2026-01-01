@@ -6,7 +6,8 @@
  getPage();
 
  function getPage() {
-  if (!$_SESSION['admin-login']) {
+  $logged = !empty($_SESSION['admin-login']);
+  if (!$logged) {
    $GLOBALS['body'] = file_get_contents($GLOBALS['template-path'] . '/login.html');
    $body_array = array(
     '[[template-path]]' => $GLOBALS['template-path'],
