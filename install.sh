@@ -2,7 +2,7 @@
 
 apt-get update
 apt-get -y upgrade
-apt-get -y install mc ssh net-tools nginx php-fpm php-imagick php-gd vnstat xfsprogs libvirt-clients libvirt-daemon libvirt-daemon-system virtinst php-libvirt-php php8.4-libvirt-php
+apt-get -y install mc ssh net-tools resolvconf nginx php-fpm php-imagick php-gd vnstat xfsprogs libvirt-clients libvirt-daemon libvirt-daemon-system virtinst php-libvirt-php php8.4-libvirt-php
 rm -rf /var/www/html
 openssl req -x509 -newkey rsa:2048 -nodes -days $(expr '(' $(date -d 2999/01/01 +%s) - $(date +%s) + 86399 ')' / 86400) -subj "/" -keyout /etc/nginx/nginx.key -out /etc/nginx/nginx.crt
 adduser www-data libvirt
